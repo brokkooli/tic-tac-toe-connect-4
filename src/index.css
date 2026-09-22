@@ -1,0 +1,145 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light: hsl(208 33% 92%);
+  --medium: hsl(208 14% 18%);
+  --dark: hsl(212 28% 9%);
+  --player-1: hsl(0 100% 75%);
+  --player-2: hsl(179 100% 45%);
+}
+
+body {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  height: 100vh;
+  background-color: var(--dark);
+  color: var(--light);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#root {
+  padding: 2rem 1rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  /* justify-content: space-between; */
+  /* justify-content: space-evenly; */
+}
+
+.info {
+  display: flex;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  /* justify-content: center; */
+  gap: 2rem;
+  /* height: 65px; */
+  height: 225px;
+}
+
+.player-1 {
+  color: var(--player-1);
+}
+
+.player-2 {
+  color: var(--player-2);
+}
+
+button {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: bold;
+  background-color: var(--medium);
+  color: inherit;
+  /* border: 2px solid var(--light); */
+  border: none;
+  border-radius: 5rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+.board {
+  display: grid;
+  /* grid-template-columns: repeat(3, 75px); */
+  grid-template-columns: repeat(3, minmax(25px, 75px));
+  /* gap: 12px; */
+  gap: 2vw;
+  align-items: center;
+  justify-items: center;
+}
+
+.connect-4 {
+  /* grid-template-columns: repeat(7, 75px);
+  grid-template-rows: repeat(6, 75px); */
+  grid-template-columns: repeat(7, minmax(25px, 75px));
+  /* grid-template-columns: repeat(7, minmax(25px, 5vw)); */
+}
+
+.tile {
+  /* height: 75px;
+  width: 75px; */
+  /* height: 100%; */
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: var(--medium);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2vw solid var(--dark);
+  transition: 0.2s;
+}
+
+.clicked-1,
+.clicked-2 {
+  cursor: initial;
+  border: none;
+}
+
+.clicked-1 {
+  background-color: var(--player-1);
+}
+
+.clicked-2 {
+  background-color: var(--player-2);
+}
+
+.connected {
+  border: 2vw solid var(--light);
+  box-shadow:
+    0 0 2vw var(--light),
+    inset 0 0 1vw var(--light);
+}
+
+@media (max-width: 580px) {
+  .info {
+    flex-direction: column;
+  }
+}
+
+@media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  #root {
+    gap: 1rem;
+  }
+
+  .connect-4 {
+    grid-template-columns: repeat(7, 13vh);
+    gap: 1vw;
+  }
+
+  .tile {
+    border-width: 2vh;
+  }
+}
